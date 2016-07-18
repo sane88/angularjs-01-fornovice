@@ -12,20 +12,11 @@
 	<div class="container">
 		<div ng-include="'page-header.html'"></div>
 		<div class="panel">
-			<form novalidate name="newTask">
-				<div class="form-group">
-					<label for="action">Action:</label>
-					<div class="input-group">
-						<input id="action" name="action" class="form-control"
-						ng-model="newItem.action"/>
-						<span class="input-group-btn">
-							<button class="btn btn-default" ng-click="addNewItem(todo.items, newItem)"
-							ng-disabled="!newItem.action">Add</button>
-						</span>
-					</div>
-				</div>
-			</form>
+			<new-task-form></new-task-form>
 			<task-list></task-list>
+			<hr/>
+			showComplete
+			<input type="checkbox" ng-model="showComplete"></input>
 		</div>
 	</div>
 	<script src="vendor/angular/angular.min.js"></script>

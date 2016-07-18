@@ -1,0 +1,26 @@
+<form novalidate name="newTask">
+  <div class="form-group">
+      <input id="action" placeholder="Action" name="action" class="form-control"
+      ng-model="newItem.action"/>
+      <!-- <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="addNewItem(todo.items, newItem)"
+        ng-disabled="!newItem.action">Add</button>
+      </span> -->
+    </div>
+    <div class="form-group form-inline">
+
+      <input id="responsible" placeholder="Responsible" name="responsible" class="form-control"
+      ng-model="newItem.responsible"/>
+
+      <input id="deadline" placeholder="Deadline" type="date" name="deadline" class="form-control"
+      ng-model="newItem.deadline"/>
+
+      <input id="estimated" placeholder="Est. Hours" type="number" name="estimated" class="form-control"
+      ng-model="newItem.estimated"/>
+      <!-- <span class="input-group-btn"> -->
+        <button class="btn btn-default" ng-click="addNewItem(todo.items, newItem)"
+        ng-disabled="!newItem.action || !newItem.responsible || !newItem.deadline || !newItem.estimated">Add</button>
+      <!-- </span> -->
+    </div>
+
+</form>
