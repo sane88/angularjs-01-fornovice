@@ -1,24 +1,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Done</th>
+      <th ng-click="sortBy('action')">Description</th>
+      <th ng-click="sortBy('done')">Done</th>
       <th>Checkbox</th>
-      <th>Deadline</th>
-      <th>Est. Hours</th>
-      <th>Responsible</th>
+      <th ng-click="sortBy('deadline')">Deadline</th>
+      <th ng-click="sortBy('estimated')">Est. Hours</th>
+      <th ng-click="sortBy('responsible')">Responsible</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in todo.items | checkedItems: showComplete | orderBy: -'action'">
+    <tr ng-repeat="item in todo.items | checkedItems: showComplete | orderBy:propName:reverse" class="{{item.done ? 'success' : ''}}">
       <td>{{item.action}}</td>
       <td>{{item.done ? "Yes" : "No"}}</td>
       <td><input type="checkbox" ng-model="item.done"></input></td>
       <td>{{item.deadline | date}}</td>
       <td>{{item.estimated}}</td>
       <td>{{item.responsible}}</td>
-      <td><a href="#" ng-click="removeItem(todo.items, item.id)">Remove</a></td>
+      <td><a href="#" ng-click="removeItem(todo.items, item)">Remove</a></td>
     </tr>
   </tbody>
 </table>

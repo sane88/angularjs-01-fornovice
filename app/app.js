@@ -10,7 +10,8 @@
               user: "Vitaliy",
               userPhoto: "images/VZ.jpg",
             })
-            .directive("newTaskForm", newTaskForm);
+            .directive("newTaskForm", newTaskForm)
+            .directive("pageHeader", pageHeader);
       // controller
     function Todo($scope, model, todoService) {
         $scope.todo = model;
@@ -18,15 +19,17 @@
         $scope.incompleteCount = todoService.incompleteCount;
         $scope.warningLevel = todoService.warningLevel;
         $scope.removeItem =todoService.removeItem;
+        $scope.removeAllCompleted = todoService.removeAllCompleted;
+        $scope.sortBy = todoService.sortBy($scope);
     }
 
     // factory
     function todoService() {
-      let idCounter = 0;
+
       function addNewItem(items, newItem){
         if(newItem && newItem.action && newItem.responsible && newItem.deadline && newItem.estimated){
           items.push({
-            id: idCounter++,
+
             action: newItem.action,
             responsible: newItem.responsible,
             deadline: newItem.deadline,
@@ -52,10 +55,10 @@
           return incompleteCount(items) < 3 ? "label-success" : "label-warning"
         };
 
-        function removeItem(items, id){
+        function removeItem(items, item){
           var indexToRemove;
           for(var key in items){
-            if(items[key].id === id){
+            if(items[key] === item){
               indexToRemove = key;
             }
           }
@@ -64,11 +67,25 @@
           }
         };
 
+        function removeAllCompleted(items){
+          var filtered = items.filter(item => !item.done);
+          items.splice(0, items.length);
+          filtered.forEach(item => items.push(item));
+        };
+
+        function sortBy($scope){
+          return function(propName){
+            $scope.reverse = ($scope.propName === propName) ? !$scope.reverse : false;
+            $scope.propName = propName;
+          }
+        }
         return {
             incompleteCount,
             warningLevel,
             addNewItem,
-            removeItem
+            removeItem,
+            removeAllCompleted,
+            sortBy
           };
       }
 
@@ -105,6 +122,12 @@
         return {
           restrict: 'E',
           templateUrl: 'new-task-form.html'
+        };
+      };
+      function pageHeader(){
+        return {
+          restrict: 'E',
+          templateUrl: 'page-header.html'
         };
       };
 })();

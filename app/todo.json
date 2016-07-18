@@ -1,6 +1,6 @@
 [
-      { "action": "Estimate...", "done": false, "id": -1},
-      { "action": "Create...", "done": false, "id": -2},
-      { "action": "Edit...", "done": true, "id": -3},
-      { "action": "Delete...", "done": false, "id": -4}
+      { "action": "Estimate...", "done": false},
+      { "action": "Create...", "done": false},
+      { "action": "Edit...", "done": true},
+      { "action": "Delete...", "done": false}
 ]

@@ -10,14 +10,14 @@
 </head>
 <body ng-cloak>
 	<div class="container">
-		<div ng-include="'page-header.html'"></div>
+		<page-header></page-header>
 		<div class="panel">
 			<new-task-form></new-task-form>
 			<task-list></task-list>
-			<hr/>
-			showComplete
-			<input type="checkbox" ng-model="showComplete"></input>
 		</div>
+		showCompleted
+		<input type="checkbox" ng-model="showComplete"></input><br />
+		<button class="btn btn-default" type="submit" ng-click="removeAllCompleted(todo.items)">Remove All Completed</button>
 	</div>
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="app.js"></script>
