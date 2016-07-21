@@ -56,15 +56,7 @@
         };
 
         function removeItem(items, item){
-          var indexToRemove;
-          for(var key in items){
-            if(items[key] === item){
-              indexToRemove = key;
-            }
-          }
-          if(indexToRemove){
-            items.splice(indexToRemove, 1);
-          }
+            items.splice(items.indexOf(item), 1);
         };
 
         function removeAllCompleted(items){
