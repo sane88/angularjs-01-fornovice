@@ -98,7 +98,7 @@
       //run
       function runApp($http, model){
         $http
-            .get("todo.json")
+            .get("data/todo.json")
             .then((response) =>{
               model.items = response.data;
             })
@@ -106,20 +106,20 @@
 
       function taskList(){
         return{
-          templateUrl: "table.html"
+          templateUrl: "templates/table.html"
         }
       };
 
       function newTaskForm(){
         return {
           restrict: 'E',
-          templateUrl: 'new-task-form.html'
+          templateUrl: 'templates/new-task-form.html'
         };
       };
       function pageHeader(){
         return {
           restrict: 'E',
-          templateUrl: 'page-header.html'
+          templateUrl: 'templates/page-header.html'
         };
       };
 })();
